@@ -1,0 +1,50 @@
+@extends('page')
+
+@section('content')
+    <div class="row">
+        <div class="col-xs-6"><h2>Bak {{$bak->name}}</h2></div>
+        <div class="col-xs-6 text-right h2-button-right">
+            <a href="{{route('bak.edit', $bak->id)}}" class="btn btn-primary"><span class="fui-new"></span> Edit</a>
+        </div>
+    </div>
+
+    <p>
+        You can view the amount of money that is stored in the bak at the moment, and see the tickets that have been used to retrieve money on this machine.
+    </p>
+
+    <table>
+        <tbody>
+        <tr>
+            <th width="100">Amount:</th> <td><span class="text-primary">&euro; {{$bak->amount}},-</span></td>
+        </tr>
+        <tr>
+            <th width="100">Status:</th> <td><span class="text-primary">{{trans("status.{$bak->status}")}}</span></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+
+
+    <h3>Tickets</h3>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Ticket Number</th>
+            <th>Webcode</th>
+            <th>Amount</th>
+            <th>Amount Given</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach($bak->tickets as $ticket)
+            <tr>
+                <td>{{$ticket->ticket_number}}</td>
+                <td>{{$ticket->webcode}}</td>
+                <td>{{$ticket->amount}}</td>
+                <td>{{$ticket->given}}</td>
+            </tr>
+        @endforeach
+        </tbody>
+    </table>
+@endsection
