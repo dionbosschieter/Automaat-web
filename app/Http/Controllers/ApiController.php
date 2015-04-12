@@ -28,6 +28,8 @@ class ApiController extends Controller
         if($this->bak->amount < $ticket->getRoundedAmount()) die("Ex04:Not enough money");
 
         $this->bak->amount -= $ticket->getRoundedAmount();
+        $this->bak->save();
+
         $ticket->addToDatabase();
         echo "0x00:" . $ticket->getRoundedAmount();
     }
