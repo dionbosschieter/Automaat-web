@@ -9,7 +9,7 @@ class Ticket extends Model {
 
 	public function bak()
     {
-        $this->belongsTo('App\Bak');
+        return $this->belongsTo('App\Bak');
     }
 
 }
