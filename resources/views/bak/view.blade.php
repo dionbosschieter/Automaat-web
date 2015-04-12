@@ -41,8 +41,8 @@
             <tr>
                 <td>{{$ticket->ticket_number}}</td>
                 <td>{{$ticket->webcode}}</td>
-                <td>{{$ticket->amount}}</td>
-                <td>{{$ticket->given}}</td>
+                <td>&euro; {{$ticket->amount}}</td>
+                <td>&euro; {{$ticket->given}}</td>
             </tr>
         @endforeach
         </tbody>

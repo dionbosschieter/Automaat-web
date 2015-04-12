@@ -19,11 +19,11 @@
         <tbody>
         @foreach($tickets as $ticket)
             <tr>
-                <td><a href="{{route('bak.view', $ticket->bak->id)}}">$ticket->bak->name</a></td>
-                <td>$ticket->ticket_number</td>
-                <td>$ticket->webcode</td>
-                <td>$ticket->amount</td>
-                <td>$ticket->given</td>
+                <td><a href="{{route('bak.view', $ticket->bak->id)}}">{{$ticket->bak->name}}</a></td>
+                <td>{{$ticket->ticket_number}}</td>
+                <td>{{$ticket->webcode}}</td>
+                <td>&euro; {{$ticket->amount}}</td>
+                <td>&euro; {{$ticket->given}}</td>
             </tr>
         @endforeach
         </tbody>
