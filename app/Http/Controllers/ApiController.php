@@ -22,7 +22,7 @@ class ApiController extends Controller
         $ticket = new MyTicket($this->bak);
         $ticket->setTicketAndWebcode();
 
-        if($ticket->ticketWasAlreadyUsed()) die("Ex01:Ticket already used");
+        if($ticket->ticketWasAlreadyUsed()) die("Ex01:Known ticket");
         if($ticket->isNotValid()) die("Ex02:Ticket not valid");
         if($ticket->isLost()) die("Ex03:Ticket lost");
         if($this->bak->amount < $ticket->getRoundedAmount()) die("Ex04:Not enough money");
