@@ -24,6 +24,27 @@
     </table>
 
 
+    <h3>Trunks</h3>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Nr</th>
+            <th>Bil type</th>
+            <th>Amount available</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{--@foreach($bak->trunks as $trunk)--}}
+            {{--<tr>--}}
+                {{--<td>{{$bak->number}}</td>--}}
+                {{--<td>{{$bak->billtype}}</td>--}}
+                {{--<td>{{$bak->available}}</td>--}}
+                {{--<td>{{$bak->description}}</td>--}}
+            {{--</tr>--}}
+        {{--@endforeach--}}
+        </tbody>
+    </table>
 
 
     <h3>Tickets</h3>
