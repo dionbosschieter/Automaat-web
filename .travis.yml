@@ -6,4 +6,7 @@ php:
   - 5.6
   - nightly
 
+install:
+  composer install
+
 script: phpunit --configuration phpunit.xml --coverage-text
