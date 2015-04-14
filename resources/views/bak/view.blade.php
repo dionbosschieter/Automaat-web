@@ -35,14 +35,14 @@
         </tr>
         </thead>
         <tbody>
-        {{--@foreach($bak->trunks as $trunk)--}}
-            {{--<tr>--}}
-                {{--<td>{{$bak->number}}</td>--}}
-                {{--<td>{{$bak->billtype}}</td>--}}
-                {{--<td>{{$bak->available}}</td>--}}
-                {{--<td>{{$bak->description}}</td>--}}
-            {{--</tr>--}}
-        {{--@endforeach--}}
+        @foreach($bak->trunks as $trunk)
+            <tr>
+                <td>{{$bak->number}}</td>
+                <td>{{$bak->bill_type}}</td>
+                <td>{{$bak->available}}</td>
+                <td>{{$bak->description}}</td>
+            </tr>
+        @endforeach
         </tbody>
     </table>
 
