@@ -17,4 +17,15 @@ class Bak extends Model {
         return $this->hasMany('App\Ticket');
     }
 
+    public function getAmountAttribute()
+    {
+        $amount = 0;
+        foreach($this->trunks as $trunk) {
+            $amount += $trunk->available * $trunk->bill_type;
+        }
+
+        return $amount;
+    }
+
+
 }

@@ -7,19 +7,9 @@
     <form action="" method="post">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-        <div class="row">
-        <div class="col-xs-6">
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" value="{{$bak->name}}" placeholder="Name" class="form-control">
-            </div>
-        </div>
-        <div class="col-xs-6">
-            <div class="form-group">
-                <label for="amount">Amount:</label>
-                <input type="number" id="amount" name="amount" value="{{$bak->amount}}" placeholder="Amount" class="form-control">
-            </div>
-        </div>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="{{$bak->name}}" placeholder="Name" class="form-control">
         </div>
 
         <div class="form-group">

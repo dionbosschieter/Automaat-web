@@ -37,10 +37,10 @@
         <tbody>
         @foreach($bak->trunks as $trunk)
             <tr>
-                <td>{{$bak->number}}</td>
-                <td>{{$bak->bill_type}}</td>
-                <td>{{$bak->available}}</td>
-                <td>{{$bak->description}}</td>
+                <td>{{$trunk->number}}</td>
+                <td>&euro; {{$trunk->bill_type}}</td>
+                <td>&euro; {{$trunk->available * $trunk->bill_type}}</td>
+                <td>{{$trunk->description}}</td>
             </tr>
         @endforeach
         </tbody>
@@ -68,4 +68,5 @@
         @endforeach
         </tbody>
     </table>
+
 @endsection

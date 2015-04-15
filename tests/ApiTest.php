@@ -29,7 +29,7 @@ class ApiTest extends TestCase {
 
     private function createBakAndTicket()
     {
-        $b = Bak::create(["name" => "b1", "apikey" => 123, "amount" => 0, "status" => 0]);
+        $b = Bak::create(["name" => "b1", "apikey" => 123, "status" => 0]);
         Ticket::create(["ticket_number" => 123, "webcode" => 345, "bak_id" => $b->id, "given" => 50, "amount" => 52]);
     }
 
