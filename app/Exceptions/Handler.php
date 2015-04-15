@@ -36,7 +36,22 @@ class Handler extends ExceptionHandler {
 	 */
 	public function render($request, Exception $e)
 	{
+        if($this->isApiException($e)) {
+            return response($e);
+        }
+
 		return parent::render($request, $e);
 	}
+
+    /**
+     * Determine if the given exception is an Api exception.
+     *
+     * @param  \Exception  $e
+     * @return bool
+     */
+    private function isApiException($e)
+    {
+        return $e instanceof ApiException;
+    }
 
 }

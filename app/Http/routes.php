@@ -28,5 +28,5 @@ Route::get('/login', 'AuthController@login');
 Route::post('/login', 'AuthController@authenticate');
 
 //Api
-Route::post('/api/setstatus', 'ApiController@setStatus');
-Route::post('/api/checkticket', 'ApiController@checkTicket');
+Route::any('/api/v1/setstatus', 'ApiController@setStatus');
+Route::any('/api/v1/checkticket', 'ApiController@checkTicket');
