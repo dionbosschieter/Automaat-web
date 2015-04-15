@@ -3,6 +3,16 @@
 class TestCase extends Illuminate\Foundation\Testing\TestCase {
 
 	/**
+	 * Default preparation for each test
+	 */
+	public function setUp()
+	{
+		parent::setUp();
+
+		$this->prepareForTests();
+	}
+
+	/**
 	 * Creates the application.
 	 *
 	 * @return \Illuminate\Foundation\Application
@@ -14,6 +24,16 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 		$app->make('Illuminate\Contracts\Console\Kernel')->bootstrap();
 
 		return $app;
+	}
+
+	/**
+	 * Migrates the database and set the mailer to 'pretend'.
+	 * This will cause the tests to run quickly.
+	 */
+	private function prepareForTests()
+	{
+		Artisan::call('migrate');
+		Mail::pretend(true);
 	}
 
 }

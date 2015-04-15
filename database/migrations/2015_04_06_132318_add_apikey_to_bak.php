@@ -12,7 +12,7 @@ class AddApikeyToBak extends Migration {
 	{
 		Schema::table('bak', function(Blueprint $table)
 		{
-			$table->string('apikey', 40);
+			$table->string('apikey', 40)->nullable();
 		});
 	}
 
