@@ -25,11 +25,8 @@ class MyTicket
         $this->request = $this->client->createRequest('POST', MyTicket::URL);
     }
 
-    public function setTicketAndWebcode()
+    public function setTicketAndWebcode($ticketnr, $webcode)
     {
-        $ticketnr = Request::input('ticketnr');
-        $webcode = Request::input('webcode');
-
         $this->setTicketnr($ticketnr);
         $this->setWebcode($webcode);
     }

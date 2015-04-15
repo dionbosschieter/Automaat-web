@@ -12,7 +12,7 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 		$this->prepareForTests();
 	}
 
-	/**
+    /**
 	 * Creates the application.
 	 *
 	 * @return \Illuminate\Foundation\Application
@@ -26,13 +26,14 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 		return $app;
 	}
 
-	/**
+    /**
 	 * Migrates the database and set the mailer to 'pretend'.
 	 * This will cause the tests to run quickly.
 	 */
 	private function prepareForTests()
 	{
 		Artisan::call('migrate');
+        DB::beginTransaction();
 		Mail::pretend(true);
 	}
 

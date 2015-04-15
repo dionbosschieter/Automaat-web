@@ -11,16 +11,17 @@ class ApiController extends Controller
 
     public function __construct()
     {
-        $apikey = Request::input('apikey');
+        $apikey = Request::input("apikey");
         $this->bak = Bak::whereApikey($apikey)->first();
+
         if(empty($this->bak))
-            throw new ApiException("Api Key Unknown", 00);
+            throw new ApiException("Api Key Unknown", 0);
     }
 
     public function checkTicket()
     {
         $ticket = new MyTicket($this->bak);
-        $ticket->setTicketAndWebcode();
+        $ticket->setTicketAndWebcode(Request::input('ticketnr'), Request::input('webcode'));
 
         if($ticket->ticketWasAlreadyUsed())
             throw new ApiException("Known ticket", 1);
@@ -40,7 +41,7 @@ class ApiController extends Controller
 
     public function setStatus()
     {
-        $status = Request::input('status');
+        $status = Request::input("status");
         if(is_numeric($status)) {
             $this->bak->status = $status;
             $this->bak->save();
