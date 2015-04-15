@@ -13,4 +13,9 @@ class Trunk extends Model {
         return $this->belongsTo('App\Bak');
     }
 
+    public function scopeOfBak($query, $bakId)
+    {
+        return $query->whereBakId($bakId);
+    }
+
 }

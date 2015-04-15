@@ -37,4 +37,11 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
 		Mail::pretend(true);
 	}
 
+    public function tearDown()
+    {
+        DB::rollback();
+
+        parent::tearDown();
+    }
+
 }

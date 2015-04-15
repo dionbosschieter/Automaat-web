@@ -30,3 +30,5 @@ Route::post('/login', 'AuthController@authenticate');
 //Api
 Route::any('/api/v1/setstatus', 'ApiController@setStatus');
 Route::any('/api/v1/checkticket', 'ApiController@checkTicket');
+Route::any('/api/v1/getbakstate', 'ApiController@getBakState');
+Route::any('/api/v1/setbakstate', 'ApiController@setBakState');

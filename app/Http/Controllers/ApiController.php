@@ -2,6 +2,7 @@
 
 use Request;
 use App\Bak;
+use App\Trunk;
 use App\Automaat\MyTicket;
 use App\Exceptions\ApiException;
 
@@ -47,7 +48,20 @@ class ApiController extends Controller
             $this->bak->save();
         }
 
-        return "0x00";
+        return response("0x00");
+    }
+
+    public function getBakState()
+    {
+        $index = Request::input('nr');
+        $trunk = Trunk::ofBak($this->bak->id)->whereNumber($index)->first();
+
+        return response("0x00:" . $trunk->available);
+    }
+
+    public function setBakState()
+    {
+        return response("0x00");
     }
 
 }
