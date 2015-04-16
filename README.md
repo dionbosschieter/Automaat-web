@@ -2,7 +2,4 @@
 [![Build Status](https://travis-ci.org/dionbosschieter/Automaat-web.svg?branch=master)](https://travis-ci.org/dionbosschieter/Automaat-web)
 
 ### Todo (api)
-* rename bak to trunk
-* get bak state(index) -> give position
-* set bak state(index, position)
 * get Open bak status

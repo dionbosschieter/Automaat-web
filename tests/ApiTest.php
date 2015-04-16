@@ -28,39 +28,39 @@ class ApiTest extends TestCase {
         $this->assertEquals("Ex01:Known ticket", $response->getContent());
     }
 
-    public function testGetBakState()
+    public function testGetTrunkState()
     {
         $this->createBakAndTicket();
         $this->createTrunk();
-        $response = $this->action("POST", "ApiController@getBakState", ["apikey" => 123, "nr" => 1]);
+        $response = $this->action("POST", "ApiController@getTrunkState", ["apikey" => 123, "nr" => 1]);
 
         $this->assertEquals("0x00:3", $response->getContent());
     }
 
-    public function testGetInvalidBakState()
+    public function testGetInvalidTrunkState()
     {
         $this->createBakAndTicket();
         $this->createTrunk();
 
-        $response = $this->action("POST", "ApiController@getBakState", ["apikey" => 123, "nr" => 2]);
+        $response = $this->action("POST", "ApiController@getTrunkState", ["apikey" => 123, "nr" => 2]);
 
         $this->assertStringStartsWith("Ex05", $response->getContent());
     }
 
-    public function testSetBakState()
+    public function testSetTrunkState()
     {
         $this->createBakAndTicket();
         $this->createTrunk();
-        $response = $this->action("POST", "ApiController@setBakState", ["apikey" => 123, "nr" => 1, "available" => 5]);
+        $response = $this->action("POST", "ApiController@setTrunkState", ["apikey" => 123, "nr" => 1, "available" => 5]);
 
         $this->assertEquals("0x00", $response->getContent());
     }
 
-    public function testSetInvalidBakState()
+    public function testSetInvalidTrunkState()
     {
         $this->createBakAndTicket();
         $this->createTrunk();
-        $response = $this->action("POST", "ApiController@setBakState", ["apikey" => 123, "nr" => 2]);
+        $response = $this->action("POST", "ApiController@setTrunkState", ["apikey" => 123, "nr" => 2]);
 
         $this->assertStringStartsWith("Ex05", $response->getContent());
     }

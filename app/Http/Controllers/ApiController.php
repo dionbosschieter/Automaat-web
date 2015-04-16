@@ -15,7 +15,7 @@ class ApiController extends Controller
         $apikey = Request::input("apikey");
         $this->bak = Bak::whereApikey($apikey)->first();
 
-        if(empty($this->bak))
+        if( ! $this->bak )
             throw new ApiException("Api Key Unknown", 0);
     }
 
@@ -51,14 +51,14 @@ class ApiController extends Controller
         return response("0x00");
     }
 
-    public function getBakState()
+    public function getTrunkState()
     {
         $trunk = $this->getTrunkOrFail();
 
         return response("0x00:" . $trunk->available);
     }
 
-    public function setBakState()
+    public function setTrunkState()
     {
         $trunk = $this->getTrunkOrFail();
 
