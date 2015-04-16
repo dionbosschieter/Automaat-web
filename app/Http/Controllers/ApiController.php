@@ -40,9 +40,27 @@ class ApiController extends Controller
         return response("0x00:" . $ticket->getRoundedAmount());
     }
 
+    /**
+     * Used to poll for when
+     *  the bak needs to close its trunks
+     *
+     * @return Response
+     */
+    public function getStatus()
+    {
+        return response("0x00:" . $this->bak->status);
+    }
+
+    /**
+     * Used to update when a user is busy or
+     *  is done and bak is idle
+     *
+     * @return Response
+     */
     public function setStatus()
     {
         $status = Request::input("status");
+
         if(is_numeric($status)) {
             $this->bak->status = $status;
             $this->bak->save();
@@ -61,9 +79,12 @@ class ApiController extends Controller
     public function setTrunkState()
     {
         $trunk = $this->getTrunkOrFail();
+        $available = Request::input('available');
 
-        $trunk->available = Request::input('available');
-        $trunk->save();
+        if(is_numeric($available)) {
+            $trunk->available = $available;
+            $trunk->save();
+        }
 
         return response("0x00");
     }

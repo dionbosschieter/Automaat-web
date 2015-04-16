@@ -23,7 +23,6 @@ class BakController extends Controller
     {
         $bak = Bak::findOrFail($id);
         $bak->name = Request::input('name');
-        $bak->amount = Request::input('amount');
         $bak->apikey = Request::input('apikey');
         $bak->save();
 

@@ -28,7 +28,8 @@ Route::get('/login', 'AuthController@login');
 Route::post('/login', 'AuthController@authenticate');
 
 //Api
-Route::any('/api/v1/setstatus', 'ApiController@setStatus');
-Route::any('/api/v1/checkticket', 'ApiController@checkTicket');
-Route::any('/api/v1/gettrunkstate', 'ApiController@getTrunkState');
-Route::any('/api/v1/settrunkstate', 'ApiController@setTrunkState');
+Route::post('/api/v1/setstatus', 'ApiController@setStatus');
+Route::post('/api/v1/getstatus', 'ApiController@getStatus');
+Route::post('/api/v1/checkticket', 'ApiController@checkTicket');
+Route::post('/api/v1/gettrunkstate', 'ApiController@getTrunkState');
+Route::post('/api/v1/settrunkstate', 'ApiController@setTrunkState');

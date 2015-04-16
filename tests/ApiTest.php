@@ -20,6 +20,22 @@ class ApiTest extends TestCase {
         $this->assertStringStartsWith("Ex00", $response->getContent());
     }
 
+    public function testGetState()
+    {
+        $this->createBak();
+        $response = $this->action("POST", "ApiController@getStatus", ["apikey" => 123]);
+
+        $this->assertEquals("0x00:0", $response->getContent());
+    }
+
+    public function testSetState()
+    {
+        $this->createBak();
+        $response = $this->action("POST", "ApiController@setStatus", ["apikey" => 123, "status" => 2]);
+
+        $this->assertEquals("0x00", $response->getContent());
+    }
+
     public function testKnownTicket()
     {
         $this->createBakAndTicket();
@@ -65,9 +81,14 @@ class ApiTest extends TestCase {
         $this->assertStringStartsWith("Ex05", $response->getContent());
     }
 
-    private function createBakAndTicket()
+    private function createBak()
     {
         Bak::create(["name" => "b1", "apikey" => 123, "status" => 0]);
+    }
+
+    private function createBakAndTicket()
+    {
+        $this->createBak();
         Ticket::create(["ticket_number" => 123, "webcode" => 345, "bak_id" => 1, "given" => 50, "amount" => 52]);
     }
 
