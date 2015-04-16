@@ -10,14 +10,14 @@ class ApiTest extends TestCase {
     {
         $response = $this->action("POST", "ApiController@checkTicket");
 
-        $this->assertEquals("Ex00:Api Key Unknown", $response->getContent());
+        $this->assertStringStartsWith("Ex00", $response->getContent());
     }
 
     public function testWrongApiKey()
     {
         $response = $this->action("POST", "ApiController@checkTicket", ["apikey" => 123]);
 
-        $this->assertEquals("Ex00:Api Key Unknown", $response->getContent());
+        $this->assertStringStartsWith("Ex00", $response->getContent());
     }
 
     public function testKnownTicket()
@@ -25,7 +25,7 @@ class ApiTest extends TestCase {
         $this->createBakAndTicket();
         $response = $this->action("POST", "ApiController@checkTicket", ["apikey" => 123, "ticketnr" => 123]);
 
-        $this->assertEquals("Ex01:Known ticket", $response->getContent());
+        $this->assertStringStartsWith("Ex01", $response->getContent());
     }
 
     public function testGetTrunkState()
