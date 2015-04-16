@@ -1,17 +1,11 @@
 language: php
 
 php:
-  - 5.5
+  - hhvm
 
 install:
   - composer self-update && composer --version
   - composer install --prefer-dist --no-interaction
-  
-# cache vendor dirs
-cache:
-  directories:
-    - vendor
-    - $HOME/.composer/cache
 
 script:
   - vendor/bin/phpunit --verbose
