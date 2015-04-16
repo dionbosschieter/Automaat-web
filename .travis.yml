@@ -1,11 +1,18 @@
 language: php
 
-php:
-  - hhvm
+php: hhvm
+
+sudo: false
 
 install:
-  - composer self-update && composer --version
-  - composer install --prefer-dist --no-interaction
+  - travis_retry composer self-update && composer --version
+  - travis_retry composer install --prefer-dist --no-interaction
+
+# cache vendor dirs
+cache:
+  directories:
+    - vendor
+    - $HOME/.composer/cache
 
 script:
   - vendor/bin/phpunit --verbose
