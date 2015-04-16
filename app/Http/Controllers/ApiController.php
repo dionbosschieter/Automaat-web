@@ -37,7 +37,7 @@ class ApiController extends Controller
         $this->bak->save();
 
         $ticket->addToDatabase();
-        echo "0x00:" . $ticket->getRoundedAmount();
+        return response("0x00:" . $ticket->getRoundedAmount());
     }
 
     public function setStatus()
@@ -55,6 +55,9 @@ class ApiController extends Controller
     {
         $index = Request::input('nr');
         $trunk = Trunk::ofBak($this->bak->id)->whereNumber($index)->first();
+
+        if( ! $trunk )
+            throw new ApiException("Invalid trunk", 5);
 
         return response("0x00:" . $trunk->available);
     }
