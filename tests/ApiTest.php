@@ -56,6 +56,15 @@ class ApiTest extends TestCase {
         $this->assertEquals("0x00", $response->getContent());
     }
 
+    public function testSetInvalidBakState()
+    {
+        $this->createBakAndTicket();
+        $this->createTrunk();
+        $response = $this->action("POST", "ApiController@setBakState", ["apikey" => 123, "nr" => 2]);
+
+        $this->assertStringStartsWith("Ex05", $response->getContent());
+    }
+
     private function createBakAndTicket()
     {
         Bak::create(["name" => "b1", "apikey" => 123, "status" => 0]);

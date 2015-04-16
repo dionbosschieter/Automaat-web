@@ -53,18 +53,30 @@ class ApiController extends Controller
 
     public function getBakState()
     {
-        $index = Request::input('nr');
-        $trunk = Trunk::ofBak($this->bak->id)->whereNumber($index)->first();
-
-        if( ! $trunk )
-            throw new ApiException("Invalid trunk", 5);
+        $trunk = $this->getTrunkOrFail();
 
         return response("0x00:" . $trunk->available);
     }
 
     public function setBakState()
     {
+        $trunk = $this->getTrunkOrFail();
+
+        $trunk->available = Request::input('available');
+        $trunk->save();
+
         return response("0x00");
+    }
+
+    private function getTrunkOrFail()
+    {
+        $index = Request::input('nr');
+        $trunk = Trunk::ofBak($this->bak->id)->whereNumber($index)->first();
+
+        if( ! $trunk )
+            throw new ApiException("Invalid trunk", 5);
+
+        return $trunk;
     }
 
 }
