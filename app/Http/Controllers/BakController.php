@@ -35,4 +35,23 @@ class BakController extends Controller
 
         return view('bak.view', compact('bak'));
     }
+
+    /**
+     * Set the close trunks status code if status is not busy
+     *
+     * @param int $id of Bak
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function closeTrunks($id)
+    {
+        $bak = Bak::findOrFail($id);
+
+        if($bak->status != 2) {
+            $bak->status = 3;
+            $bak->save();
+        }
+
+        return redirect()->route('bak.view', [$id]);
+    }
+
 }

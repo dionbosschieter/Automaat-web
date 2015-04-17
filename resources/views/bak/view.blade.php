@@ -23,8 +23,18 @@
         </tbody>
     </table>
 
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Trunks</h3>
+        </div>
+        <div class="col-md-6 h2-button-right text-right">
+            <a href="{{route('bak.closetrunks', $bak->id)}}" {{$bak->status == 2 ? "disabled" : ""}} class="btn btn-primary"><span class="fui-lock"></span> Close trunks</a>
+        </div>
+    </div>
+    <p>
+        If you want to refill the money trunks, wait for the bak to be in waiting state and click the close trunks button.
+    </p>
 
-    <h3>Trunks</h3>
     <table class="table">
         <thead>
         <tr>
