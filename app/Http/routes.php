@@ -11,6 +11,7 @@
 |
 */
 
+//Web interface
 Route::group(['middleware' => 'auth'], function() {
 
     Route::get('/', 'HomeController@index');
@@ -21,7 +22,11 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/bak/{id}/view', ['as' => 'bak.view', 'uses' => 'BakController@view']);
     Route::get('/bak/{id}/edit', ['as' => 'bak.edit', 'uses' => 'BakController@edit']);
     Route::get('/bak/{id}/closetrunks', ['as' => 'bak.closetrunks', 'uses' => 'BakController@closeTrunks']);
-    Route::post('/bak/{id}/edit', 'BakController@handleEdit');
+    Route::post('/bak/{id}/edit', 'BakController@update');
+
+    //Trunk
+    Route::get('/trunk/{id}/edit', ['as' => 'trunk.edit', 'uses' => 'TrunkController@edit']);
+    Route::post('/trunk/{id}/edit', 'TrunkController@update');
 
 });
 

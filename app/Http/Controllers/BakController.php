@@ -19,7 +19,7 @@ class BakController extends Controller
         return view('bak.edit', compact('bak'));
     }
 
-    public function handleEdit($id)
+    public function update($id)
     {
         $bak = Bak::findOrFail($id);
         $bak->name = Request::input('name');

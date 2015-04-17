@@ -42,15 +42,17 @@
             <th>Bil type</th>
             <th>Amount available</th>
             <th>Description</th>
+            <th>Edit</th>
         </tr>
         </thead>
         <tbody>
         @foreach($bak->trunks as $trunk)
             <tr>
-                <td>{{$trunk->number}}</td>
+                <td>{{$trunk->number}}  </td>
                 <td>&euro; {{$trunk->bill_type}}</td>
                 <td>&euro; {{$trunk->available * $trunk->bill_type}}</td>
                 <td>{{$trunk->description}}</td>
+                <td><a href="{{route('trunk.edit', $trunk->id)}}"><span class="fui-new"></span></a></td>
             </tr>
         @endforeach
         </tbody>

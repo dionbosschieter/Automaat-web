@@ -2,7 +2,7 @@
 
 @section('content')
     <h2>Edit {{$bak->name}}</h2>
-    <p>You can edit the amount of money left in the bak.</p>
+    <p>You can edit the name or the api key.</p>
 
     <form action="" method="post">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
