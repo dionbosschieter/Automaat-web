@@ -8,12 +8,7 @@
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
         <div class="row">
-            <div class="form-group col-md-6">
-                <label for="bill_type">Bill type:</label>
-                <input type="number" id="bill_type" name="bill_type" value="{{$trunk->bill_type}}" placeholder="Bill type" class="form-control">
-            </div>
-
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-12">
                 <label for="available">Number of bills available:</label>
                 <input type="number" id="available" name="available" value="{{$trunk->available}}" placeholder="Number of bills available" class="form-control">
             </div>
