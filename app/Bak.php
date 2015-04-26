@@ -17,6 +17,16 @@ class Bak extends Model {
         return $this->hasMany('App\Ticket');
     }
 
+    public function hasEnoughMoneyFor($amountToPay)
+    {
+        $amountAvailable = 0;
+        foreach($this->trunks->where('bill_type', '<=', $amount)->get() as $trunk) {
+            $amountAvailable += $trunk->available * $trunk->bill_type;
+        }
+
+        return $amountAvailable >= $amountToPay;
+    }
+
     public function getAmountAttribute()
     {
         $amount = 0;
@@ -26,6 +36,5 @@ class Bak extends Model {
 
         return $amount;
     }
-
 
 }
