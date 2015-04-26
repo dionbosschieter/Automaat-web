@@ -20,7 +20,7 @@ class Bak extends Model {
     public function hasEnoughMoneyFor($amountToPay)
     {
         $amountAvailable = 0;
-        foreach($this->trunks->where('bill_type', '<=', $amount)->get() as $trunk) {
+        foreach($this->trunks->where('bill_type', '<=', $amountToPay)->get() as $trunk) {
             $amountAvailable += $trunk->available * $trunk->bill_type;
         }
 
