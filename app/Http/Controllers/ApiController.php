@@ -30,7 +30,7 @@ class ApiController extends Controller
             throw new ApiException("Ticket not valid", 2);
         if($ticket->isLost())
             throw new ApiException("Ticket lost", 3);
-        if($this->bak->hasEnoughMoneyFor($ticket->getRoundedAmount()))
+        if($this->bak->hasNotEnoughMoneyFor($ticket->getRoundedAmount()))
             throw new ApiException("Not enough money", 4);
 
         $ticket->addToDatabase();

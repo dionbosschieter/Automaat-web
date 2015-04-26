@@ -17,14 +17,19 @@ class Bak extends Model {
         return $this->hasMany('App\Ticket');
     }
 
-    public function hasEnoughMoneyFor($amountToPay)
+    public function hasNotEnoughMoneyFor($amountToPay)
     {
-        $amountAvailable = 0;
-        foreach($this->trunks()->where('bill_type', '<=', $amountToPay)->get() as $trunk) {
-            $amountAvailable += $trunk->available * $trunk->bill_type;
+        foreach($this->trunks()->get() as $trunk) {
+            if($trunk->bill_type > $amountToPay) continue;
+            if($amountToPay == 0) break;
+
+            for($i=0;$i<$trunk->available;$i++) {
+                if($amountToPay == 0) break;
+                $amountToPay -= $trunk->bill_type;
+            }
         }
 
-        return $amountAvailable >= $amountToPay;
+        return $amountToPay > 0;
     }
 
     public function getAmountAttribute()
